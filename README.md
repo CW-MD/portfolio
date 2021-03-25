@@ -1,3 +1,5 @@
+Created using the GatsbyJs CLI, this is a static site I'm building up to showcase my work.
+
 <p align="center">
   <a href="https://www.gatsbyjs.com/?utm_source=starter&utm_medium=readme&utm_campaign=minimal-starter">
     <img alt="Gatsby" src="https://www.gatsbyjs.com/Gatsby-Monogram.svg" width="60" />
