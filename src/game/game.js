@@ -1,3 +1,4 @@
+//core game logic, run/render loops, char/cam settings, scenes, lights, canvas definition,
 import {
   Engine,
   Scene,
