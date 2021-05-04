@@ -1,6 +1,6 @@
-import * as React from 'react';
-import Navbar from '../components/navbar';
-import '../styles/global.css';
+import * as React from "react";
+import Navbar from "../components/navbar";
+
 const about = () => {
   return (
     <>

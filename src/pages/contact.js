@@ -1,10 +1,11 @@
-import * as React from 'react';
-import Navbar from '../components/navbar';
+import * as React from "react";
+import Navbar from "../components/navbar";
+
 const contact = () => {
   return (
     <>
       <Navbar />
-      <div>This is the contact page</div>
+      <div className="test">This is the contact page</div>
     </>
   );
 };
