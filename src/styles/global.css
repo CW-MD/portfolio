@@ -19,7 +19,9 @@
 body {
   margin: 0;
 }
-.test {
+.Heading {
   font-size: 3rem;
-  padding-top: 5rem;
+  padding-top: 6rem;
+}
+.Ipsum {
 }
