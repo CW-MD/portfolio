@@ -1,6 +1,6 @@
-import React from 'react';
-import { Link } from 'gatsby';
-import '../styles/global.css';
+import React from "react";
+import { Link } from "gatsby";
+import "../styles/global.css";
 export default function Navbar() {
   return (
     <>
@@ -8,6 +8,7 @@ export default function Navbar() {
         <Link to="/">Home</Link>
         <Link to="/about">About</Link>
         <Link to="/contact">Contact</Link>
+        <Link to="/gameTest">Game Test</Link>
       </div>
     </>
   );
