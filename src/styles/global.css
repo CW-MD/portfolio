@@ -24,4 +24,12 @@ body {
   padding-top: 6rem;
 }
 .Ipsum {
+  width: fill;
+  height: fill;
+  overflow: visible;
+}
+
+#gameCanvas {
+  height: 100%;
+  width: 100%;
 }
