@@ -51,7 +51,7 @@ const onRender = (scene) => {
 
 export default function Game() {
   return (
-    <div>
+    <div onClick={() => console.log("Canvas Clicked")}>
       <SceneSetup
         antialias
         onSceneReady={onSceneReady}

@@ -1,5 +1,8 @@
 //keybinds, mappings, control scheme will go here
 import React from "react";
+
+//TODO: Bind listen() to gameContainer instead of window -- currently firing on all pages, should only fire within game
+
 // const w = "w" | "W"; // 87
 // const a = "a" | "A"; // 65
 // const s = "s" | "S"; // 83
