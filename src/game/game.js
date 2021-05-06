@@ -8,8 +8,6 @@ import {
 import SceneSetup from "./SceneSetup";
 import listen from "./input";
 
-listen();
-
 let box;
 
 const onSceneReady = (scene) => {
@@ -51,7 +49,7 @@ const onRender = (scene) => {
 
 export default function Game() {
   return (
-    <div onClick={() => console.log("Canvas Clicked")}>
+    <div onKeyDown={(e) => listen(e)}>
       <SceneSetup
         antialias
         onSceneReady={onSceneReady}
