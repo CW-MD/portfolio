@@ -6,6 +6,9 @@ import {
   MeshBuilder,
 } from "@babylonjs/core";
 import SceneSetup from "./SceneSetup";
+import listen from "./input";
+
+listen();
 
 let box;
 
