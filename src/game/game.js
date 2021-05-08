@@ -4,6 +4,7 @@ import {
   Vector3,
   HemisphericLight,
   MeshBuilder,
+  UniversalCamera,
 } from "@babylonjs/core";
 import SceneSetup from "./SceneSetup";
 import listen from "./input";
@@ -12,7 +13,15 @@ let box;
 
 const onSceneReady = (scene) => {
   // This creates and positions a free camera (non-mesh)
-  var camera = new FreeCamera("camera1", new Vector3(0, 5, -10), scene);
+  var camera = new UniversalCamera("camera1", new Vector3(0, 5, -10), scene);
+  // camera.applyGravity = true;
+  camera.checkCollisions = true;
+  camera.speed = 0.3;
+  // keysLeft.set()
+  camera.keysLeft = [65, 37, 100];
+  camera.keysRight = [68, 39, 102];
+  camera.keysUp = [87, 38, 104];
+  camera.keysDown = [83, 40, 98];
 
   // This targets the camera to scene origin
   camera.setTarget(Vector3.Zero());
