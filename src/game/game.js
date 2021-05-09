@@ -13,11 +13,12 @@ let box;
 
 const onSceneReady = (scene) => {
   // This creates and positions a free camera (non-mesh)
-  var camera = new UniversalCamera("camera1", new Vector3(0, 5, -10), scene);
+  var camera = new UniversalCamera("camera1", new Vector3(0, 1, -14), scene);
   // camera.applyGravity = true;
   camera.checkCollisions = true;
   camera.speed = 0.3;
-  // keysLeft.set()
+
+  //WASD, Arrows, numpad: 8426
   camera.keysLeft = [65, 37, 100];
   camera.keysRight = [68, 39, 102];
   camera.keysUp = [87, 38, 104];
@@ -42,7 +43,13 @@ const onSceneReady = (scene) => {
   box.position.y = 1;
 
   // Ground setup
-  MeshBuilder.CreateGround("ground", { width: 6, height: 6 }, scene);
+  MeshBuilder.CreateGround("ground", { width: 15, height: 20 }, scene);
+  const lobby = MeshBuilder.CreateGround(
+    "entrance",
+    { width: 4, height: 5 },
+    scene
+  );
+  lobby.position.z = -12.5;
 };
 
 // Will run on every frame render.  We are spinning the box on the y-axis.
