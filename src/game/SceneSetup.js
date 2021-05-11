@@ -1,4 +1,4 @@
-import { Engine, Scene } from "@babylonjs/core";
+import { Engine, Scene, Vector3 } from "@babylonjs/core";
 import React, { useEffect, useRef } from "react";
 
 const SceneSetup = (props) => {
@@ -22,6 +22,8 @@ const SceneSetup = (props) => {
         adaptToDeviceRatio
       );
       const scene = new Scene(engine, sceneOptions);
+      scene.collisionsEnabled = true;
+      scene.gravity = new Vector3(0, -2, 0);
 
       if (scene.isReady()) {
         props.onSceneReady(scene);

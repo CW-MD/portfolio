@@ -14,9 +14,11 @@ let box;
 const onSceneReady = (scene) => {
   // This creates and positions a free camera (non-mesh)
   var camera = new UniversalCamera("camera1", new Vector3(0, 1, -14), scene);
-  // camera.applyGravity = true;
   camera.checkCollisions = true;
+  camera.applyGravity = true;
   camera.speed = 0.3;
+  camera.ellipsoid = new Vector3(1, 1, 1);
+  camera.ellipsoidOffset = new Vector3(1, 1, 1);
 
   //WASD, Arrows, numpad: 8426
   camera.keysLeft = [65, 37, 100];
@@ -39,16 +41,23 @@ const onSceneReady = (scene) => {
 
   // Box model setup
   box = MeshBuilder.CreateBox("box", { size: 2 }, scene);
+  box.checkCollisions = true;
 
   box.position.y = 1;
 
   // Ground setup
-  MeshBuilder.CreateGround("ground", { width: 15, height: 20 }, scene);
+  const ground = MeshBuilder.CreateGround(
+    "ground",
+    { width: 15, height: 20 },
+    scene
+  );
+  ground.checkCollisions = true;
   const lobby = MeshBuilder.CreateGround(
     "entrance",
     { width: 4, height: 5 },
     scene
   );
+  lobby.checkCollisions = true;
   lobby.position.z = -12.5;
 };
 
