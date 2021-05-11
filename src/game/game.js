@@ -16,6 +16,13 @@ const onSceneReady = (scene) => {
   var camera = new UniversalCamera("camera1", new Vector3(0, 1, -14), scene);
   camera.checkCollisions = true;
   camera.applyGravity = true;
+  //SpaceBar to toggle Gravity for debugging and t
+  window.addEventListener("keydown", (e) => {
+    if (e.key === " ") {
+      camera.applyGravity = !camera.applyGravity;
+      console.log("space pressed");
+    }
+  });
   camera.speed = 0.3;
   camera.ellipsoid = new Vector3(1, 1, 1);
   camera.ellipsoidOffset = new Vector3(1, 1, 1);
@@ -59,6 +66,37 @@ const onSceneReady = (scene) => {
   );
   lobby.checkCollisions = true;
   lobby.position.z = -12.5;
+
+  //Wall Setup -- will reformat into separate function
+  const wall1 = MeshBuilder.CreateBox("1", { size: 20, height: 4, width: 1 });
+  wall1.position.z = 0;
+  wall1.position.y = 2;
+  wall1.position.x = 8;
+  wall1.checkCollisions = true;
+
+  const wall2 = MeshBuilder.CreateBox("2", { size: 20, height: 4, width: 1 });
+  wall2.position.z = 0;
+  wall2.position.y = 2;
+  wall2.position.x = -8;
+  wall2.checkCollisions = true;
+
+  const wall3 = MeshBuilder.CreateBox("3", { size: 1, height: 4, width: 15 });
+  wall3.position.z = 10;
+  wall3.position.y = 2;
+  wall3.position.x = 0;
+  wall3.checkCollisions = true;
+
+  const wall4 = MeshBuilder.CreateBox("4", { size: 1, height: 4, width: 6 });
+  wall4.position.z = -10;
+  wall4.position.y = 2;
+  wall4.position.x = 5;
+  wall4.checkCollisions = true;
+
+  const wall5 = MeshBuilder.CreateBox("5", { size: 1, height: 4, width: 6 });
+  wall5.position.z = -10;
+  wall5.position.y = 2;
+  wall5.position.x = -5;
+  wall5.checkCollisions = true;
 };
 
 // Will run on every frame render.  We are spinning the box on the y-axis.
