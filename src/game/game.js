@@ -5,9 +5,13 @@ import {
   HemisphericLight,
   MeshBuilder,
   UniversalCamera,
+  Mesh,
 } from "@babylonjs/core";
 import SceneSetup from "./SceneSetup";
 import listen from "./input";
+import textDemo from "./mesh";
+
+import * as GUI from "babylonjs-gui";
 
 let box;
 
@@ -26,6 +30,23 @@ const onSceneReady = (scene) => {
   camera.speed = 0.3;
   camera.ellipsoid = new Vector3(1, 1, 1);
   camera.ellipsoidOffset = new Vector3(1, 1, 1);
+  //
+  const plane = Mesh.CreatePlane("plane", 2);
+  plane.parent = box;
+  plane.position.y = 4;
+
+  let advTexture = GUI.AdvancedDynamicTexture.CreateForMesh(plane);
+
+  let button1 = GUI.Button.CreateSimpleButton("but1", "Click Me");
+  button1.width = 1;
+  button1.height = 0.4;
+  button1.color = "white";
+  button1.fontSize = 50;
+  button1.background = "green";
+  button1.onPointerUpObservable.add(function () {
+    alert("you did it!");
+  });
+  advTexture.addControl(button1);
 
   //WASD, Arrows, numpad: 8426
   camera.keysLeft = [65, 37, 100];
