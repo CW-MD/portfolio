@@ -6,11 +6,13 @@ import {
   MeshBuilder,
   UniversalCamera,
   Mesh,
+  StandardMaterial,
+  Texture,
 } from "@babylonjs/core";
 import SceneSetup from "./SceneSetup";
 import listen from "./input";
 import textDemo from "./mesh";
-
+import TileFloor from "./assets/TileFloor.jpeg";
 import * as GUI from "babylonjs-gui";
 
 let box;
@@ -79,7 +81,11 @@ const onSceneReady = (scene) => {
     { width: 15, height: 20 },
     scene
   );
+  const groundMat = new StandardMaterial("tileFloor", scene);
+  groundMat.diffuseTexture = new Texture(TileFloor, scene);
+  ground.material = groundMat;
   ground.checkCollisions = true;
+
   const lobby = MeshBuilder.CreateGround(
     "entrance",
     { width: 4, height: 5 },
