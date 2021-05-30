@@ -8,11 +8,13 @@ import {
   Mesh,
   StandardMaterial,
   Texture,
+  Color3,
 } from "@babylonjs/core";
 import SceneSetup from "./SceneSetup";
 import listen from "./input";
 import textDemo from "./mesh";
 import TileFloor from "./assets/TileFloor.jpeg";
+import Wallpaper from "./assets/EleWall.jpeg";
 import * as GUI from "babylonjs-gui";
 
 let box;
@@ -67,7 +69,7 @@ const onSceneReady = (scene) => {
   // This creates a light, aiming 0,1,0
   var light = new HemisphericLight("light", new Vector3(0, 1, 0), scene);
 
-  light.intensity = 0.7;
+  light.intensity = 1;
 
   // Box model setup
   box = MeshBuilder.CreateBox("box", { size: 2 }, scene);
@@ -95,11 +97,15 @@ const onSceneReady = (scene) => {
   lobby.position.z = -12.5;
 
   //Wall Setup -- will reformat into separate function
+  const wallMesh = new StandardMaterial("wallPaper", scene);
+  wallMesh.diffuseTexture = new Texture(Wallpaper, scene);
+  wallMesh.diffuseColor = new Color3.FromHexString("#fff86b");
   const wall1 = MeshBuilder.CreateBox("1", { size: 20, height: 4, width: 1 });
   wall1.position.z = 0;
   wall1.position.y = 2;
   wall1.position.x = 8;
   wall1.checkCollisions = true;
+  wall1.material = wallMesh;
 
   const wall2 = MeshBuilder.CreateBox("2", { size: 20, height: 4, width: 1 });
   wall2.position.z = 0;
