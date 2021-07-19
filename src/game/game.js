@@ -76,9 +76,9 @@ const onSceneReady = (scene) => {
   camera.attachControl(canvas, true);
 
   // This creates a light, aiming 0,1,0
-  var light = new HemisphericLight("light", new Vector3(0, 2, 0), scene);
+  var light = new HemisphericLight("light", new Vector3(0, 8, 0), scene);
  // var light2 = new HemisphericLight("light2", new Vector3(-3, 2, 0), scene);
-  light.intensity = 1.2;
+  light.intensity = 1.5;
   //light2.intensity = .5
 
   //let pointLight = new
@@ -114,7 +114,32 @@ const onSceneReady = (scene) => {
     glass.emissiveColor = new Color3(0.46, 0.48, 0.5)
     glass.metallic = 1.0
     glass.roughness = 0.3
-    glass.alpha = 0.3
+    glass.alpha = 0.35
+
+    const roof1 = MeshBuilder.CreateBox('roof1', {size:.2, width:7, depth:9})
+    roof1.position.y = 5
+    roof1.position.x = -4
+    roof1.position.z = -5
+    roof1.material = glass
+
+    const roof2 = MeshBuilder.CreateBox('roof2', {size:.2, width:7, depth:9})
+    roof2.position.y = 5
+    roof2.position.x = 4
+    roof2.position.z = -5
+    roof2.material = glass
+
+    const roof3 = MeshBuilder.CreateBox('roof3', {size:.2, width:7, depth:9})
+    roof3.position.y = 5
+    roof3.position.x = -4
+    roof3.position.z = 5
+    roof3.material = glass
+
+    const roof4 = MeshBuilder.CreateBox('roof4', {size:.2, width:7, depth:9})
+    roof4.position.y = 5
+    roof4.position.x = 4
+    roof4.position.z = 5
+    roof4.material = glass
+    
 
   // const roof = MeshBuilder.CreateCylinder('roof',{diameter: 1.3, height: 1.2, tessellation: 3})
   // roof.position.y = 5
