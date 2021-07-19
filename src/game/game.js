@@ -20,6 +20,7 @@ import textDemo from "./mesh";
 import TileFloor from "./assets/TileFloor.jpeg";
 import Wallpaper from "./assets/EleWall.jpeg";
 import * as GUI from "babylonjs-gui";
+import preppyFrame from './assets/Preppy_border.jpg'
 
 let ipsum = 'Lorem ipsum dolor sit amet, consectetur adipiscing elit. Pellentesque mauris diam, pharetra at cursus at, ultrices pellentesque ex. Pellentesque non porta turpis. In quis iaculis tortor. Donec in libero bibendum, luctus tortor nec, lobortis massa. Curabitur egestas vulputate imperdiet. Vestibulum finibus sit amet metus quis euismod. Nunc rhoncus aliquet arcu, a efficitur risus vestibulum at. Curabitur placerat interdum nisi, vitae pretium velit. Sed id tempor arcu, id finibus nibh. Fusce efficitur porta facilisis.'
 let box;
@@ -42,10 +43,10 @@ const onSceneReady = (scene) => {
   //
   const plane = Mesh.CreatePlane("plane", 2);
   plane.parent = wall1;
-  plane.position.y = .5;
+  plane.position.y = .7;
   plane.position.x = 7.4;
   plane.position.z = -3
-  plane.rotation.y = 1.5
+  plane.rotation.y = Math.PI / 2
 
   let advTexture = GUI.AdvancedDynamicTexture.CreateForMesh(plane);
 
@@ -83,7 +84,7 @@ const onSceneReady = (scene) => {
 
   //let pointLight = new
 
-  // Box model setup
+  // Box column model setup
   box = MeshBuilder.CreateBox("box", { width:1.5, height:6, depth:1.5 }, scene);
   box.checkCollisions = true;
 
@@ -100,6 +101,7 @@ const onSceneReady = (scene) => {
   ground.material = groundMat;
   ground.checkCollisions = true;
 
+  //lobby setup
   const lobby = MeshBuilder.CreateGround(
     "entrance",
     { width: 4, height: 5 },
@@ -108,7 +110,7 @@ const onSceneReady = (scene) => {
   lobby.checkCollisions = true;
   lobby.position.z = -12.5;
 
-
+    //glass material setup
   const glass = new PBRMetallicRoughnessMaterial('smplrwhite', scene)
     glass.baseColor = new Color3(0.78, 0.82, 0.85)
     glass.emissiveColor = new Color3(0.46, 0.48, 0.5)
@@ -116,6 +118,7 @@ const onSceneReady = (scene) => {
     glass.roughness = 0.3
     glass.alpha = 0.35
 
+    //glass roof panels
     const roof1 = MeshBuilder.CreateBox('roof1', {size:.2, width:7, depth:9})
     roof1.position.y = 5
     roof1.position.x = -4
@@ -145,14 +148,33 @@ const onSceneReady = (scene) => {
   // roof.position.y = 5
   // roof.rotation.z = Math.PI / 2
   // roof.material = glass
-  const beam1 = MeshBuilder.CreateBox('beam1', {size:1, height:1, width:15})
-  const beam2 = MeshBuilder.CreateBox('beam2', {size:1, height:19, width:1})
+  const beam1 = MeshBuilder.CreateBox('beam1', {size:.5, height:1, width:15})
+  const beam2 = MeshBuilder.CreateBox('beam2', {size:.5, height:19, width:1})
   const beam3 = MeshBuilder.CreateBox('beam3',{size:1, height:1, width:4} )
   beam3.position.y = 4.5
   beam3.position.z = -10
   beam1.position.y = 4.5
   beam2.rotation.x = Math.PI / 2
   beam2.position.y = 4.5
+
+
+  //Wall Images setup
+
+  let preppyMat = new StandardMaterial('preppyMat', scene)
+  preppyMat.diffuseTexture = new Texture(preppyFrame, scene)
+  preppyMat.specularColor = new Color3(0,0,0)
+  preppyMat.backFaceCulling = false
+
+  let preppyPlane = MeshBuilder.CreatePlane('plane', {size:3},scene)
+  //preppyPlane.rotation.x = Math.PI / 2
+  preppyPlane.material = preppyMat
+  preppyPlane.position.y = 3
+  preppyPlane.position.x = 7.4;
+  preppyPlane.position.z = -3
+  preppyPlane.rotation.y = Math.PI / 2
+  
+  
+
 
   //Wall Setup -- will reformat into separate function
   const wallColor = new StandardMaterial('wallcolor', scene)
