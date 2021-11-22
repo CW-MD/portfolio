@@ -1,3 +1,7 @@
+*This was an early concept/WIP that was more or less abandoned 
+-- my first vision was to make a 3d game out of my portfolio/resume.
+ This was dropped after I had considered how obnoxious it may feel to to actually view*
+
 Created using the GatsbyJs CLI, this is a static site I'm building up to showcase my work.
 
 <p align="center">
